@@ -1,3 +1,49 @@
 <resources>
-    <string name="app_name">buildacomputer</string>
+    <!-- Login page text -->
+    <string name="app_name">Build-A-Computer</string>
+    <string name="usernameField">Username:</string>
+    <string name="passwordField">Password:</string>
+    <string name="usernameHint">Enter username</string>
+    <string name="passwordHint">Enter password</string>
+    <string name="loginButton">Login</string>
+    <string name="signUpButton">Sign up</string>
+    <string name="guestButton">Guest</string>
+
+    <!-- Main page text -->
+    <string name="mainText">Welcome, </string>
+    <string name="searchPartText">Search Parts</string>
+    <string name="newBuildText">New Build</string>
+    <string name="viewBuildsText">View Builds</string>
+    <string name="logoutText">Log Out</string>
+    <string name="deleteAccountText">Delete Account</string>
+
+    <!-- Parts -->
+    <string name="caseText">Cases</string>
+    <string name="moboText">Motherboards</string>
+    <string name="cpuText">CPUs</string>
+    <string name="gpuText">GPUs</string>
+    <string name="storeText">Storage</string>
+    <string name="ramText">Memory</string>
+    <string name="powerText">Power Supplies</string>
+    <string name="coolText">Cooling Fans</string>
+
+    <!-- Create Build page text -->
+    <string name="buildText">Build</string>
+    <string name="createText">Create Build</string>
+
+    <!-- Edit Build page text -->
+    <string name="editBuildText">Edit Build</string>
+    <string name="deleteBuildText">Delete Build</string>
+
+    <!-- View Builds page text -->
+    <string name="buildListText">Builds List</string>
+
+    <!-- View Parts page text -->
+    <string name="partListText">Parts List</string>
+
+    <!-- Part Attributes -->
+    <string name="partName">Part Name</string>
+    <string name="partType">Part Type</string>
+    <string name="partDescription">Description</string>
+    <string name="partSpecs">Specifications</string>
 </resources>
