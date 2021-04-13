@@ -4,69 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SearchPartsActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mainText"
+        android:text="@string/searchPartText"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <Button
-        android:id="@+id/searchPartsButton"
+        android:id="@+id/caseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/searchPartText"
+        android:layout_marginTop="20dp"
+        android:text="@string/caseText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/newBuildButton"
+        android:id="@+id/moboButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/newBuildText"
+        android:text="@string/moboText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchPartsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/caseButton" />
 
     <Button
-        android:id="@+id/viewBuildsButton"
+        android:id="@+id/cpuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/viewBuildsText"
+        android:text="@string/cpuText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newBuildButton" />
+        app:layout_constraintTop_toBottomOf="@+id/moboButton" />
 
     <Button
-        android:id="@+id/logoutButton"
+        android:id="@+id/gpuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/logoutText"
+        android:text="@string/gpuText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewBuildsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/cpuButton" />
 
     <Button
-        android:id="@+id/deleteAccountButton"
+        android:id="@+id/storageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/deleteAccountText"
+        android:text="@string/storeText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+        app:layout_constraintTop_toBottomOf="@+id/gpuButton" />
+
+    <Button
+        android:id="@+id/ramButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/ramText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storageButton" />
+
+    <Button
+        android:id="@+id/psuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/powerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ramButton" />
+
+    <Button
+        android:id="@+id/coolingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/coolText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/psuButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
