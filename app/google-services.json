@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "968452930357",
+    "project_id": "build-a-computer",
+    "storage_bucket": "build-a-computer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968452930357:android:fdd8ba55859067ef776a7c",
+        "android_client_info": {
+          "package_name": "com.buildacomputer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968452930357-skjk60iamd6j42s0idf19s6h1qijq7il.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKfYUVDjPbDr1QebYZ7lY_ENXHxHzFUI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968452930357-skjk60iamd6j42s0idf19s6h1qijq7il.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
