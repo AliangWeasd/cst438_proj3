@@ -72,7 +72,7 @@ public class SignupActivity extends AppCompatActivity {
                                 user1 = new CompUsers(uName,uUsername,uPassword,uUsername);
                                 ref.child(user1.getId()).setValue(user1);
                                 Toast.makeText(getApplicationContext(),"User Registered",Toast.LENGTH_SHORT).show();
-                                Intent intent = MainActivity.intentFactory(getApplicationContext());
+                                Intent intent = LoginActivity.intentFactory(getApplicationContext());
                                 startActivity(intent);
                             }
 

@@ -1,5 +1,6 @@
 package com.buildacomputer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,5 +41,9 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = MainActivity.intentFactory(getApplicationContext());
             startActivity(intent);
         });
+    }
+
+    public static Intent intentFactory(Context context){
+        return new Intent(context,LoginActivity.class);
     }
 }
