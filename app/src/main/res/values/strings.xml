@@ -46,4 +46,6 @@
     <string name="partType">Part Type</string>
     <string name="partDescription">Description</string>
     <string name="partSpecs">Specifications</string>
+    <string name="users">Users</string>
+    <string name="parts">Parts</string>
 </resources>
