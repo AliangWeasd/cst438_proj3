@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         signUpButton.setOnClickListener(v -> {
-            Intent intent = MainActivity.intentFactory(getApplicationContext());
+            Intent intent = SignupActivity.intentFactory(getApplicationContext());
             startActivity(intent);
         });
 
