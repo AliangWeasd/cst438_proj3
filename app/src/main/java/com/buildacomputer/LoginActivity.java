@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -70,8 +71,16 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         guestButton.setOnClickListener(v -> {
-            Intent intent = MainActivity.intentFactory(getApplicationContext());
-            startActivity(intent);
+            mAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(LoginActivity.this,"Logged in as Guest",Toast.LENGTH_SHORT).show();
+                        Intent intent = MainActivity.intentFactory(LoginActivity.this);
+                        startActivity(intent);
+                    }
+                }
+            });
         });
     }
 
