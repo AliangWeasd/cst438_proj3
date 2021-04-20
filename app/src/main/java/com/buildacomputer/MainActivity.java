@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -72,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(v -> {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
             startActivity(intent);
+        });
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = LoginActivity.intentFactory(MainActivity.this);
+                Toast.makeText(MainActivity.this,"Signed Out.",Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
         });
     }
 }

@@ -1,9 +1,9 @@
 <resources>
     <!-- Login page text -->
     <string name="app_name">Build-A-Computer</string>
-    <string name="usernameField">Username:</string>
+    <string name="usernameField">Email:</string>
     <string name="passwordField">Password:</string>
-    <string name="usernameHint">Enter username</string>
+    <string name="usernameHint">Enter Email</string>
     <string name="passwordHint">Enter password</string>
     <string name="loginButton">Login</string>
     <string name="signUpButton">Sign up</string>
