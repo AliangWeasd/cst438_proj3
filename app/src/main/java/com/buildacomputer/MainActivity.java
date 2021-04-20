@@ -48,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userProfile = snapshot.getValue(CompUsers.class);
-                Toast.makeText(MainActivity.this,userProfile.getUsername(),Toast.LENGTH_LONG).show();
+                if (userProfile!=null) {
+                    Toast.makeText(MainActivity.this, userProfile.getUsername(), Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Guest Login", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
