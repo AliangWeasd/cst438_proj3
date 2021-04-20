@@ -7,6 +7,18 @@
     tools:context=".SignupActivity">
 
     <EditText
+        android:id="@+id/editTextTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="332dp"
+        android:ems="10"
+        android:hint="@string/edit_email"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextUserName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,TextFields" />
+
+    <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +60,7 @@
         android:id="@+id/signup_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="100dp"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
