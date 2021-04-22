@@ -3,19 +3,14 @@ package com.buildacomputer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.buildacomputer.FirebaseAdapters.CompUsers;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Objects;
 
-import com.buildacomputer.FirebaseAdapters.CompParts;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewPartActivity extends AppCompatActivity {
 
-    private static final String MAIN = "com.example.intents.main";
+    private static final String NAME = "com.example.intents.main";
+    private static final String PART = "com.example.intents.main";
     private TextView partName;
     private ImageView imageView;
     private TextView description;
@@ -36,7 +32,6 @@ public class ViewPartActivity extends AppCompatActivity {
     private TextView title;
     private String imageURL;
 
-    private CompParts part1;
     private HashMap part;
 
     @Override
@@ -50,7 +45,8 @@ public class ViewPartActivity extends AppCompatActivity {
         description = findViewById(R.id.Part_Description);
         etc = findViewById(R.id.Part_Etc);
 
-        int compPartType = Integer.parseInt(getIntent().getStringExtra(MAIN));
+        String compPartName = getIntent().getStringExtra("NAME");
+        int compPartType = Integer.parseInt(getIntent().getStringExtra("PART"));
 
         DatabaseReference refTypes = FirebaseDatabase.getInstance().getReference("CompPartType");
         Query checkTypes = refTypes.orderByChild("partType").equalTo(compPartType);
@@ -59,7 +55,7 @@ public class ViewPartActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     part = (HashMap) data.getValue();
-                    title.setText("Searching by: " + (String)part.get("name"));
+                    title.setText("Searching by: " + part.get("name"));
                 }
             }
 
@@ -70,8 +66,8 @@ public class ViewPartActivity extends AppCompatActivity {
         });
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("compPart");
-        Query checkUser = ref.orderByChild("partType").equalTo(compPartType);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query checkPart = ref.orderByChild("name").equalTo(compPartName);
+        checkPart.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
@@ -85,23 +81,23 @@ public class ViewPartActivity extends AppCompatActivity {
                                 .into(imageView);
 
                     String extraText = "";
-                    if(!part.get("size").equals(false)) {
-                        extraText += "Size: " + (Long) part.get("size") + "\n";
+                    if(!Objects.equals(part.get("size"), false)) {
+                        extraText += "Size: " + part.get("size") + "\n";
                     }
-                    if(!part.get("memoryType").equals(false)) {
-                        extraText += "Memory: " + (Long) part.get("memoryType") + "\n";
+                    if(!Objects.equals(part.get("memoryType"), false)) {
+                        extraText += "Memory: " + part.get("memoryType") + "\n";
                     }
-                    if(!part.get("heatCool").equals(false)) {
-                        extraText += "Cooling: " + (Long) part.get("heatCool") + " W\n";
+                    if(!Objects.equals(part.get("heatCool"), false)) {
+                        extraText += "Cooling: " + part.get("heatCool") + " W\n";
                     }
-                    if(!part.get("heatGen").equals(false)) {
-                        extraText += "TDP: " + (Long) part.get("heatGen") + " W\n";
+                    if(!Objects.equals(part.get("heatGen"), false)) {
+                        extraText += "TDP: " + part.get("heatGen") + " W\n";
                     }
-                    if(!part.get("powerUse").equals(false)) {
-                        extraText += "Power Use: " + (Long) part.get("powerUse") + " W\n";
+                    if(!Objects.equals(part.get("powerUse"), false)) {
+                        extraText += "Power Use: " + part.get("powerUse") + " W\n";
                     }
-                    if(!part.get("powerSupply").equals(false)) {
-                        extraText += "Power Supply: " + (Long) part.get("powerSupply") + " W\n";
+                    if(!Objects.equals(part.get("powerSupply"), false)) {
+                        extraText += "Power Supply: " + part.get("powerSupply") + " W\n";
                     }
 
                     if(!extraText.isEmpty()) {
@@ -118,13 +114,8 @@ public class ViewPartActivity extends AppCompatActivity {
         });
     }
 
-    public static Intent intentFactory(Context context) {
-        return new Intent(context, ViewPartActivity.class);
-    }
-
-    public static Intent intentFactory(Context packageContext, String text) {
+    public static Intent intentFactory(Context packageContext) {
         Intent intent = new Intent(packageContext, ViewPartActivity.class);
-        intent.putExtra(MAIN,text);
         return intent;
     }
 }

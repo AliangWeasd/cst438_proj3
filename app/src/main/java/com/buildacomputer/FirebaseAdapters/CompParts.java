@@ -27,6 +27,12 @@ public class CompParts {
         this.powerSupply = powerSupply;
     }
 
+    public CompParts(String name, String part_type, String picture) {
+        this.name = name;
+        this.part_type = part_type;
+        this.picture = picture;
+    }
+
     public CompParts() {
     }
 
@@ -37,7 +43,7 @@ public class CompParts {
     public void setName(String name) {
         this.name = name;
     }
-
+    /*
     public String getDescription() {
         return description;
     }
@@ -45,7 +51,6 @@ public class CompParts {
     public void setDescription(String description) {
         this.description = description;
     }
-
     public String getPart_type() {
         return part_type;
     }
@@ -53,7 +58,7 @@ public class CompParts {
     public void setPart_type(String part_type) {
         this.part_type = part_type;
     }
-
+    */
     public String getPicture() {
         return picture;
     }
@@ -61,7 +66,7 @@ public class CompParts {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-
+    /*
     public String getSize() {
         return size;
     }
@@ -109,4 +114,5 @@ public class CompParts {
     public void setPowerSupply(String powerSupply) {
         this.powerSupply = powerSupply;
     }
+    */
 }
