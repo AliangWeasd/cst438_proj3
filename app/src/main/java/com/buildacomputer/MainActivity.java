@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button viewBuildsButton;
     private Button logoutButton;
     private Button deleteAccountButton;
+    private Button adminButton;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         viewBuildsButton = findViewById(R.id.viewBuildsButton);
         logoutButton = findViewById(R.id.logoutButton);
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
+        adminButton = findViewById(R.id.adminButton);
 
         searchButton.setOnClickListener(v -> {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
@@ -84,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = LoginActivity.intentFactory(MainActivity.this);
                 Toast.makeText(MainActivity.this,"Signed Out.",Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
+
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = AdminMain.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
