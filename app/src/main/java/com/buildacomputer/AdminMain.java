@@ -31,7 +31,7 @@ public class AdminMain extends AppCompatActivity {
         });
 
         partsButton.setOnClickListener(v -> {
-            Intent intent = AdminViewParts.intentFactory(getApplicationContext());
+            Intent intent = AdminSearchParts.intentFactory(getApplicationContext());
             startActivity(intent);
         });
 

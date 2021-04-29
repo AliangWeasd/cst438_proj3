@@ -61,4 +61,9 @@
     <string name="powerUse">Power Demand: </string>
     <string name="powerSupply">Power Supplied: </string>
     <string name="edit_email">Email</string>
+
+  <string name="searching">Searching by </string>
+    <string name="username_placeholder">Username:</string>
+    <string name="email_placeholder">Email:</string>
+    <string name="admin_button">Admin</string>
 </resources>

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button viewBuildsButton;
     private Button logoutButton;
     private Button deleteAccountButton;
+    private Button adminButton;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         viewBuildsButton = findViewById(R.id.viewBuildsButton);
         logoutButton = findViewById(R.id.logoutButton);
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
+        adminButton = findViewById(R.id.adminButton);
 
 
         searchButton.setOnClickListener(v -> {
@@ -98,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = AdminMain.intentFactory(getApplicationContext());
+                startActivity(intent);
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 AlertDialog alert = dialog.create();
                 alert.show();
+
             }
         });
     }
