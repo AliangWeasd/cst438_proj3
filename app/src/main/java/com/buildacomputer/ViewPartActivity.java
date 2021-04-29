@@ -3,6 +3,7 @@ package com.buildacomputer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class ViewPartActivity extends AppCompatActivity {
         imageView = findViewById(R.id.Part_Picture);
         description = findViewById(R.id.Part_Description);
         etc = findViewById(R.id.Part_Etc);
+        Log.d("Hello","There");
 
         String compPartName = getIntent().getStringExtra("NAME");
         int compPartType = Integer.parseInt(getIntent().getStringExtra("PART"));
