@@ -3,14 +3,13 @@ package com.buildacomputer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.buildacomputer.FirebaseAdapters.CompUsers;
 import com.buildacomputer.RecyclerView.AdminUserAdapter;
@@ -21,47 +20,47 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class AdminViewUsers extends AppCompatActivity {
-
-    RecyclerView recyclerView;
-    ArrayList<String> username = new ArrayList<>();
-    ArrayList<String> email = new ArrayList<>();
-    Button delete;
+public class AdminEditActivity extends AppCompatActivity {
+    EditText username;
+    EditText firstName;
+    EditText password;
+    TextView email;
+    Button editButton;
+    Button deleteButton;
+    String mUsername;
+    CompUsers userProfile;
 
     DatabaseReference database;
     HashMap user;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_view_users);
-        recyclerView = findViewById(R.id.user_list);
-        Adapter adapter;
+        setContentView(R.layout.activity_admin_edit_user);
+        pullUserFromIntent();
         getDatabase();
+    }
 
-
+    private void pullUserFromIntent() {
+        mUsername = getIntent().getStringExtra("USERNAME");
     }
 
     private void getDatabase() {
         database = FirebaseDatabase
                 .getInstance()
                 .getReference("compUser");
-        Query dbUsers = database.orderByKey();
-        dbUsers.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query dbUser = database.orderByChild("username").equalTo(mUsername);
+        dbUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot i : snapshot.getChildren()){
-                    user = (HashMap) i.getValue();
-                    username.add((String) user.get("username"));
-                    email.add((String) user.get("email"));
-                }
-                AdminUserAdapter adapter = new AdminUserAdapter(AdminViewUsers.this, username, email);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                user = (HashMap) snapshot.getChildren().iterator().next().getValue();
+                firstName = findViewById(R.id.editName);
+                username = findViewById(R.id.editUsername);
+                password = findViewById(R.id.editPassword);
+                email = findViewById(R.id.editEmail);
+
             }
 
             @Override
@@ -71,7 +70,10 @@ public class AdminViewUsers extends AppCompatActivity {
         });
     }
 
+    private void wireupDisplay() {
+    }
+
     public static Intent intentFactory(Context context) {
-        return new Intent(context, AdminViewUsers.class);
+        return new Intent(context, AdminEditActivity.class);
     }
 }
