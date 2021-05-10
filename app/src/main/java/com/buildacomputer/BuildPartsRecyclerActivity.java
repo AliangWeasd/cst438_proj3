@@ -1,19 +1,21 @@
 package com.buildacomputer;
 
-// This page is used in the view parts page.
-// This page presents a list of parts pertaining to a part type.
+// This page is used in the new build page.
+// This page mirrors the PartsRecyclerActivity, presenting a list of parts pertaining to a part type.
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.buildacomputer.FirebaseAdapters.CompParts;
-import com.buildacomputer.RecyclerView.SearchPartAdapter;
+import com.buildacomputer.RecyclerView.BuildPartAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,12 +27,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class PartsRecyclerActivity extends AppCompatActivity {
-
-    private static final int MAIN = 0;
+public class BuildPartsRecyclerActivity extends AppCompatActivity {
+    private static final int PART_TYPE = 0;
 
     RecyclerView recyclerView;
     ArrayList<String> name = new ArrayList<>();
+    ArrayList<Integer> id = new ArrayList<>();
     ArrayList<Integer> partType= new ArrayList<>();
     ArrayList<String> picture= new ArrayList<>();
 
@@ -42,35 +44,35 @@ public class PartsRecyclerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.part_recycler);
         recyclerView = findViewById(R.id.part_list);
-
         getRecView();
     }
 
     protected void getRecView() {
         Context context = this;
 
-        int partTypeText = getIntent().getIntExtra("MAIN",0);
-        int compPartType = partTypeText;
+        int partTypeExtra = getIntent().getIntExtra("PART_TYPE",0);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("compPart");
-        Query checkUser = ref.orderByChild("partType").equalTo(compPartType);
+        Query checkUser = ref.orderByChild("partType").equalTo(partTypeExtra);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     part = (HashMap) data.getValue();
 
-                    CompParts party = new CompParts((String) part.get("name"), partTypeText, (String) part.get("picture"));
+                    CompParts party = new CompParts((String) part.get("name"), Math.toIntExact((Long)part.get("id")), partTypeExtra, (String) part.get("picture"));
                     parts.add(party);
                 }
 
                 for (CompParts i : parts){
                     name.add(i.getName());
-                    partType.add(partTypeText);
+                    id.add(i.getId());
+                    partType.add(partTypeExtra);
                     picture.add(i.getPicture());
                 }
 
-                SearchPartAdapter adapter = new SearchPartAdapter(context,name,partType,picture);
+                BuildPartAdapter adapter = new BuildPartAdapter(context,name,id,partType,picture);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
@@ -82,9 +84,8 @@ public class PartsRecyclerActivity extends AppCompatActivity {
         });
     }
 
-    public static Intent intentFactory(Context packageContext, int text) {
-        Intent intent = new Intent(packageContext, PartsRecyclerActivity.class);
-        intent.putExtra("MAIN",text);
+    public static Intent intentFactory(Context packageContext) {
+        Intent intent = new Intent(packageContext, BuildPartsRecyclerActivity.class);
         return intent;
     }
 }

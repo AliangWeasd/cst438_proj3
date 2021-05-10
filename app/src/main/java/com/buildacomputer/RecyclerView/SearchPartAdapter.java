@@ -1,8 +1,9 @@
 package com.buildacomputer.RecyclerView;
 
+// There is almost assuredly a smarter way for how a Recycler can decide on which static intent to use.
+
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +14,19 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.buildacomputer.PartsRecyclerActivity;
-import com.buildacomputer.SearchPartsActivity;
 import com.buildacomputer.ViewPartActivity;
 import com.buildacomputer.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PartAdapter extends RecyclerView.Adapter<PartAdapter.MyViewHolder>{
+public class SearchPartAdapter extends RecyclerView.Adapter<SearchPartAdapter.MyViewHolder>{
     Context context;
     ArrayList<String> name;
     ArrayList<String> imageText;
-    ArrayList<String> compPartType;
+    ArrayList<Integer> compPartType;
 
-    public PartAdapter(Context context, ArrayList<String> name,  ArrayList<String> partType, ArrayList<String> imageText) {
+    public SearchPartAdapter(Context context, ArrayList<String> name, ArrayList<Integer> partType, ArrayList<String> imageText) {
         this.context = context;
         this.name = name;
         this.compPartType = partType;
@@ -36,14 +35,14 @@ public class PartAdapter extends RecyclerView.Adapter<PartAdapter.MyViewHolder>{
 
     @NonNull
     @Override
-    public PartAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchPartAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.part_row,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PartAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull SearchPartAdapter.MyViewHolder holder, final int position) {
         holder.pName.setText(name.get(position));
         Picasso.with(context).load(imageText.get(position))
                 .into(holder.pImage);

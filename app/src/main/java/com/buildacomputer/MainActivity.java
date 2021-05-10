@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -55,13 +54,14 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userProfile = snapshot.getValue(CompUsers.class);
                 if (userProfile!=null) {
-                    Toast.makeText(MainActivity.this, userProfile.getUsername(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, userProfile.getUsername() + ", welcome!", Toast.LENGTH_LONG).show();
                     deleteAccountButton.setVisibility(View.VISIBLE);
+                    newBuildButton.setVisibility((View.VISIBLE));
                     viewBuildsButton.setVisibility(View.VISIBLE);
                 }else{
                     Toast.makeText(MainActivity.this, "Guest Login", Toast.LENGTH_LONG).show();
-
                     deleteAccountButton.setVisibility(View.INVISIBLE);
+                    newBuildButton.setVisibility((View.INVISIBLE));
                     viewBuildsButton.setVisibility(View.INVISIBLE);
                 }
             }
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(MainActivity.this,"Something went wrong.",Toast.LENGTH_LONG).show();
-
             }
         });
     }
@@ -90,6 +89,12 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(v -> {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
             startActivity(intent);
+        });
+        newBuildButton.setOnClickListener(v -> {
+           Intent intent = NewBuildRecyclerActivity.intentFactory(getApplicationContext());
+           intent.putExtra("ID",-1);
+           intent.putExtra("USER_EMAIL",userProfile.getEmail());
+           startActivity(intent);
         });
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
