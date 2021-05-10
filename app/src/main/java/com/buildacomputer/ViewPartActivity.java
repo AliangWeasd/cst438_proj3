@@ -1,5 +1,8 @@
 package com.buildacomputer;
 
+// This page is used in the view parts page.
+// This page presents the list of specifcations and data about an item.
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ViewPartActivity extends AppCompatActivity {
 
     private static final String NAME = "com.example.intents.main";
-    private static final String PART = "com.example.intents.main";
+    private static final int PART = 0;
     private TextView partName;
     private ImageView imageView;
     private TextView description;
@@ -45,10 +48,9 @@ public class ViewPartActivity extends AppCompatActivity {
         imageView = findViewById(R.id.Part_Picture);
         description = findViewById(R.id.Part_Description);
         etc = findViewById(R.id.Part_Etc);
-        Log.d("Hello","There");
 
         String compPartName = getIntent().getStringExtra("NAME");
-        int compPartType = Integer.parseInt(getIntent().getStringExtra("PART"));
+        int compPartType = getIntent().getIntExtra("PART",0);
 
         DatabaseReference refTypes = FirebaseDatabase.getInstance().getReference("CompPartType");
         Query checkTypes = refTypes.orderByChild("partType").equalTo(compPartType);
