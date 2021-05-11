@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = AdminMain.intentFactory(getApplicationContext());
                 startActivity(intent);
+            }
+        });
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
