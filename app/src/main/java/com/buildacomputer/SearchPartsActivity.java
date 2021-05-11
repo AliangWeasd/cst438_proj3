@@ -3,7 +3,6 @@ package com.buildacomputer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,49 +25,49 @@ public class SearchPartsActivity extends AppCompatActivity {
 
         caseButton = findViewById(R.id.caseButton);
         caseButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "0");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 0);
             startActivity(intent);
         });
 
         moboButton = findViewById(R.id.moboButton);
         moboButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "1");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 1);
             startActivity(intent);
         });
 
         cpuButton = findViewById(R.id.cpuButton);
         cpuButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "2");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 2);
             startActivity(intent);
         });
 
         gpuButton = findViewById(R.id.gpuButton);
         gpuButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "3");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 3);
             startActivity(intent);
         });
 
         storageButton = findViewById(R.id.storageButton);
         storageButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "4");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 4);
             startActivity(intent);
         });
 
         memoryButton = findViewById(R.id.ramButton);
         memoryButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "5");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 5);
             startActivity(intent);
         });
 
         coolButton = findViewById(R.id.coolingButton);
         coolButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "6");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 6);
             startActivity(intent);
         });
 
         powerButton = findViewById(R.id.psuButton);
         powerButton.setOnClickListener(v -> {
-            Intent intent = ViewPartActivity.intentFactory(getApplicationContext(), "7");
+            Intent intent = PartsRecyclerActivity.intentFactory(getApplicationContext(), 7);
             startActivity(intent);
         });
     }
