@@ -37,7 +37,7 @@ public class AdminEditActivity extends AppCompatActivity {
     TextView email;
     Button editButton;
     Button deleteButton;
-    String mUsername;
+    String mEmail;
     CompUsers userProfile;
 
     DatabaseReference database;
@@ -52,20 +52,21 @@ public class AdminEditActivity extends AppCompatActivity {
     }
 
     private void pullUserFromIntent() {
-        mUsername = getIntent().getStringExtra("USERNAME");
+        mEmail = getIntent().getStringExtra("EMAIL");
     }
 
     private void getDatabase() {
         database = FirebaseDatabase
                 .getInstance()
                 .getReference("compUser");
-        Query dbUser = database.orderByChild("username").equalTo(mUsername);
+        Query dbUser = database.orderByChild("email").equalTo(mEmail);
         dbUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user = (HashMap) snapshot.getChildren().iterator().next().getValue();
 
                 editButton = findViewById(R.id.editButton);
+                deleteButton = findViewById(R.id.deleteButton);
                 firstName = findViewById(R.id.editName);
                 username = findViewById(R.id.editUsername);
                 password = findViewById(R.id.editPassword);
@@ -83,53 +84,46 @@ public class AdminEditActivity extends AppCompatActivity {
                                 password.getText().toString(),
                                 email.getText().toString());
                         FirebaseDatabase.getInstance().getReference("compUser")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child(snapshot.getChildren().iterator().next().getKey())
                                 .setValue(update);
-//                        Map<String, Object> update = new HashMap<>();
-//                        update.put("name", firstName.getText().toString());
-//                        update.put("username", username.getText().toString());
-//                        update.put("password", password.getText().toString());
-//                        update.put("email", email.getText().toString());
-//                        String ref = dbUser.getRef().toString();
-//                        database.child(dbUser.getRef()).updateChildren(update);
                         Intent intent = AdminViewUsers.intentFactory(getApplicationContext());
                         startActivity(intent);
                     }
                 });
 
-//                deleteButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        AlertDialog.Builder dialog = new AlertDialog.Builder();
-//                        dialog.setTitle("Are you sure?");
-//                        dialog.setMessage("Deleting your account will remove your builds from the system and cannot be undone.");
-//                        dialog.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                    @Override
-//                                    public void onComplete(@NonNull Task<Void> task) {
-//                                        if (task.isSuccessful()){
-//                                            Toast.makeText(,"Account Deleted", Toast.LENGTH_SHORT).show();
-//                                            Intent intent = LoginActivity.intentFactory();
-//                                            startActivity(intent);
-//                                        }else{
-//                                            Toast.makeText(,"Error please try again",Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    }
-//                                });
-//                            }
-//                        });
-//                        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                dialogInterface.dismiss();
-//                            }
-//                        });
-//                        AlertDialog alert = dialog.create();
-//                        alert.show();
-//                    }
-//                });
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(AdminEditActivity.this);
+                        dialog.setTitle("Are you sure?");
+                        dialog.setMessage("Deleting this account will remove the user from the system and cannot be undone.");
+                        dialog.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                snapshot.getChildren().iterator().next().getRef().removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(AdminEditActivity.this,"Account Deleted", Toast.LENGTH_SHORT).show();
+                                            Intent intent = AdminViewUsers.intentFactory(getApplicationContext());
+                                            startActivity(intent);
+                                        }else{
+                                            Toast.makeText(AdminEditActivity.this,"Error please try again",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        AlertDialog alert = dialog.create();
+                        alert.show();
+                    }
+                });
             }
 
             @Override
