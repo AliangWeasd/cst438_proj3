@@ -13,10 +13,13 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchPartsActivity" />
         <activity android:name=".ViewPartActivity" />
+        <activity android:name=".BuildPartsRecyclerActivity" />
+        <activity android:name=".PartsRecyclerActivity" />
         <activity android:name=".AdminMain" />
         <activity android:name=".AdminViewUsers" />
         <activity android:name=".AdminViewParts" />
         <activity android:name=".AdminEditActivity" />
+        <activity android:name=".NewBuildRecyclerActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
