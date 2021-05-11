@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
             startActivity(intent);
         });
+
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
