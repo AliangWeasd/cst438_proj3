@@ -90,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
             startActivity(intent);
         });
+
         newBuildButton.setOnClickListener(v -> {
            Intent intent = NewBuildRecyclerActivity.intentFactory(getApplicationContext());
            intent.putExtra("ID",-1);
            intent.putExtra("USER_EMAIL",userProfile.getEmail());
            startActivity(intent);
         });
+      
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = AdminMain.intentFactory(getApplicationContext());
                 startActivity(intent);
+
             }
         });
 
