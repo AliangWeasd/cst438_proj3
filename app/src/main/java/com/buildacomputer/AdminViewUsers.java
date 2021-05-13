@@ -42,7 +42,6 @@ public class AdminViewUsers extends AppCompatActivity {
         recyclerView = findViewById(R.id.user_list);
         Adapter adapter;
         getDatabase();
-        //getRecView();
 
 
     }
@@ -60,7 +59,7 @@ public class AdminViewUsers extends AppCompatActivity {
                     username.add((String) user.get("username"));
                     email.add((String) user.get("email"));
                 }
-                AdminUserAdapter adapter = new AdminUserAdapter(getApplicationContext(), username, email);
+                AdminUserAdapter adapter = new AdminUserAdapter(AdminViewUsers.this, username, email);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
@@ -70,13 +69,6 @@ public class AdminViewUsers extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void getRecView() {
-
-        AdminUserAdapter adapter = new AdminUserAdapter(this, username, email);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public static Intent intentFactory(Context context) {
