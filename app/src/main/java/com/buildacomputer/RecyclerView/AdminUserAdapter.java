@@ -44,7 +44,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.MyVi
             @Override
             public void onClick(View view) {
                 Intent intent = AdminEditActivity.intentFactory(context);
-                intent.putExtra("USERNAME", username.get(position));
+                intent.putExtra("EMAIL", email.get(position));
                 context.startActivity(intent);
             }
         });
