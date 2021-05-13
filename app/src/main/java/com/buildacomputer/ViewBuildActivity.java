@@ -2,12 +2,14 @@ package com.buildacomputer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.buildacomputer.RecyclerView.ViewBuildAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ViewBuildActivity extends AppCompatActivity {
-    ArrayList<String> builds;
+    ArrayList<String> builds = new ArrayList<>();
+    ArrayList<String> emails = new ArrayList<>();
     RecyclerView recyclerView;
     HashMap build;
     @Override
@@ -40,7 +43,13 @@ public class ViewBuildActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data: snapshot.getChildren()){
                     build = (HashMap) data.getValue();
+                    builds.add((String) build.get("buildName"));
+                    emails.add((String) build.get("email"));
                 }
+
+                ViewBuildAdapter adapter = new ViewBuildAdapter(context,builds,emails);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
 
             @Override
