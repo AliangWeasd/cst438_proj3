@@ -62,12 +62,22 @@
     <string name="powerSupply">Power Supplied: </string>
     <string name="edit_email">Email</string>
 
-
     <string name="username_placeholder">Username:</string>
     <string name="email_placeholder">Email:</string>
     <string name="admin_button">Admin</string>
+
+    <string name="create_build_title">Create Build:</string>
+    <string-array name="build_requirements">
+        <item>Case Needed</item>
+        <item name="need_1">Motherboard Needed</item>
+        <item name="need_2">CPU Needed</item>
+        <item name="need_3">GPU Needed</item>
+        <item name="need_4">Storage Needed</item>
+        <item name="need_5">Memory Needed</item>
+        <item name="need_6">Power Needed</item>
+        <item name="need_7">Cooling Needed</item>
+    </string-array>
+    <string name="create_build">Create!</string>
+    <string name="cancel_build">Cancel</string>
     <string name="build_name">Build Name:</string>
-    <string name="create_build_title" />
-    <string name="create_build" />
-    <string name="cancel_build" />
 </resources>

@@ -72,7 +72,7 @@ public class SelectBuildActivity extends AppCompatActivity {
     }
     public void fillTheFields(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("compPart");
-        Query getCase = reference.orderByChild("id").equalTo((String) finalBuild.get("caseID"));
+        Query getCase = reference.orderByChild("id").equalTo((long)finalBuild.get("caseID"));
         getCase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -80,6 +80,111 @@ public class SelectBuildActivity extends AppCompatActivity {
                     part = (HashMap) data.getValue();
                 }
                 bCase.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getCooling = reference.orderByChild("id").equalTo((long)finalBuild.get("coolingID"));
+        getCooling.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bCooling.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getCpu = reference.orderByChild("id").equalTo((long)finalBuild.get("cpuID"));
+        getCpu.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bCpu.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getGpu = reference.orderByChild("id").equalTo((long)finalBuild.get("gpuID"));
+        getGpu.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bGpu.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getMem = reference.orderByChild("id").equalTo((long)finalBuild.get("memoryID"));
+        getMem.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bMemory.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getMobo = reference.orderByChild("id").equalTo((long)finalBuild.get("moboID"));
+        getMobo.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bMobo.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getPsu = reference.orderByChild("id").equalTo((long)finalBuild.get("psuID"));
+        getPsu.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bPsu.setText((String) part.get("name"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Query getStorage = reference.orderByChild("id").equalTo((long)finalBuild.get("storageID"));
+        getStorage.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    part = (HashMap) data.getValue();
+                }
+                bStorage.setText((String) part.get("name"));
             }
 
             @Override
