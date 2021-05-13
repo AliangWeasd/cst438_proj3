@@ -86,6 +86,16 @@ public class MainActivity extends AppCompatActivity {
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
         adminButton = findViewById(R.id.adminButton);
 
+        viewBuildsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ViewBuildActivity.intentFactory(MainActivity.this);
+                intent.putExtra("email",userProfile.getEmail());
+                startActivity(intent);
+
+            }
+        });
+
 
         searchButton.setOnClickListener(v -> {
             Intent intent = SearchPartsActivity.intentFactory(getApplicationContext());
@@ -106,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = AdminMain.intentFactory(getApplicationContext());
                 startActivity(intent);
+            }
+        });
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
