@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectBuildActivity">
+
+    <TextView
+        android:id="@+id/select_case"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="68dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/select_cooling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_case"
+        app:layout_constraintTop_toBottomOf="@+id/select_case" />
+
+    <TextView
+        android:id="@+id/select_cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_cooling"
+        app:layout_constraintTop_toBottomOf="@+id/select_cooling" />
+
+    <TextView
+        android:id="@+id/select_gpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_cpu"
+        app:layout_constraintTop_toBottomOf="@+id/select_cpu" />
+
+    <TextView
+        android:id="@+id/select_memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_gpu"
+        app:layout_constraintTop_toBottomOf="@+id/select_gpu" />
+
+    <TextView
+        android:id="@+id/select_psu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_memory"
+        app:layout_constraintTop_toBottomOf="@+id/select_memory" />
+
+    <TextView
+        android:id="@+id/select_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_psu"
+        app:layout_constraintTop_toBottomOf="@+id/select_psu" />
+
+    <TextView
+        android:id="@+id/select_mobo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        app:layout_constraintStart_toStartOf="@+id/select_storage"
+        app:layout_constraintTop_toBottomOf="@+id/select_storage" />
+</androidx.constraintlayout.widget.ConstraintLayout>

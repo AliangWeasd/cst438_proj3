@@ -81,5 +81,5 @@
     </string-array>
     <string name="create_build">Create!</string>
     <string name="cancel_build">Cancel</string>
-    <string name="build_name">Build Name</string>
+    <string name="build_name">Build Name:</string>
 </resources>
