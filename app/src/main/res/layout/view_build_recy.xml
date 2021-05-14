@@ -20,7 +20,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="94dp">
+            android:layout_height="94dp"
+            android:background="@android:drawable/editbox_dropdown_light_frame">
 
             <TextView
                 android:id="@+id/actual_build_name"
@@ -35,11 +36,11 @@
             <TextView
                 android:id="@+id/view_build_name"
                 android:layout_width="84dp"
-                android:textStyle="bold"
                 android:layout_height="26dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:text="@string/build_name"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
