@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.buildacomputer.FirebaseAdapters.CompUsers;
@@ -25,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView welcomeText;
     private Button searchButton;
     private Button newBuildButton;
     private Button viewBuildsButton;
@@ -41,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getUserFromFB();
-
         wireupButtons();
     }
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userProfile = snapshot.getValue(CompUsers.class);
                 if (userProfile!=null) {
-                    Toast.makeText(MainActivity.this, userProfile.getUsername() + ", welcome!", Toast.LENGTH_LONG).show();
+                    welcomeText.setText("Welcome, " + userProfile.getUsername());
                     deleteAccountButton.setVisibility(View.VISIBLE);
                     newBuildButton.setVisibility((View.VISIBLE));
                     viewBuildsButton.setVisibility(View.VISIBLE);
@@ -78,12 +79,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void wireupButtons() {
+        welcomeText = findViewById(R.id.searchTitle);
         searchButton = findViewById(R.id.searchPartsButton);
         newBuildButton = findViewById(R.id.newBuildButton);
         viewBuildsButton = findViewById(R.id.viewBuildsButton);
         logoutButton = findViewById(R.id.logoutButton);
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
         adminButton = findViewById(R.id.adminButton);
+
+        viewBuildsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ViewBuildActivity.intentFactory(MainActivity.this);
+                intent.putExtra("email",userProfile.getEmail());
+                startActivity(intent);
+            }
+        });
 
 
         searchButton.setOnClickListener(v -> {
