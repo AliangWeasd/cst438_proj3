@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userProfile = snapshot.getValue(CompUsers.class);
                 if (userProfile!=null) {
-                    welcomeText.setText("Welcome, " + userProfile.getUsername());
+                    welcomeText.setText("Welcome, " + userProfile.getName());
                     deleteAccountButton.setVisibility(View.VISIBLE);
                     newBuildButton.setVisibility((View.VISIBLE));
                     viewBuildsButton.setVisibility(View.VISIBLE);
