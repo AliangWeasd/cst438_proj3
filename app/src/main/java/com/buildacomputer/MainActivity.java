@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     deleteAccountButton.setVisibility(View.VISIBLE);
                     newBuildButton.setVisibility((View.VISIBLE));
                     viewBuildsButton.setVisibility(View.VISIBLE);
+                    isAdmin();
                 }else{
                     Toast.makeText(MainActivity.this, "Guest Login", Toast.LENGTH_LONG).show();
                     deleteAccountButton.setVisibility(View.INVISIBLE);
@@ -74,6 +75,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void isAdmin() {
+        if (userProfile.getEmail().equals("test@gmail.com")){
+            adminButton.setVisibility(View.VISIBLE);
+        }
+    }
+
     public static Intent intentFactory(Context context) {
         return new Intent(context, MainActivity.class);
     }
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.logoutButton);
         deleteAccountButton = findViewById(R.id.deleteAccountButton);
         adminButton = findViewById(R.id.adminButton);
+        adminButton.setVisibility(View.INVISIBLE);
 
         viewBuildsButton.setOnClickListener(new View.OnClickListener() {
             @Override
