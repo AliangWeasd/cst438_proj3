@@ -82,4 +82,13 @@
     <string name="create_build">Create!</string>
     <string name="cancel_build">Cancel</string>
     <string name="build_name">Build Name:</string>
+    <string name="adminSearchPartText">Admin Search Parts</string>
+    <string name="editItem">Edit</string>
+    <string name="name">Name:</string>
+    <string name="description">Desc:</string>
+    <string name="img_irl">Img IRL:</string>
+    <string name="misc">Misc:</string>
+    <string name="edit_item">Edit Item</string>
+    <string name="misc2">Misc2:</string>
+
 </resources>
