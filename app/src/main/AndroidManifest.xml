@@ -17,7 +17,9 @@
         <activity android:name=".PartsRecyclerActivity" />
         <activity android:name=".AdminMain" />
         <activity android:name=".AdminViewUsers" />
+        <activity android:name=".AdminViewPart" />
         <activity android:name=".AdminViewParts" />
+        <activity android:name=".AdminSearchParts" />
         <activity android:name=".AdminEditActivity" />
         <activity android:name=".NewBuildRecyclerActivity" />
         <activity android:name=".LoginActivity">
