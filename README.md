@@ -1,5 +1,5 @@
 <h1>Build-a-Computer</h1>
-<h4>CST438 Spring 2021 Project 3</h4>
+<h4>CSUMB CST438 Spring 2021 Project 3</h4>
 <hr>
 <h5> Contributors </h5>
 <ul>
